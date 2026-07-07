@@ -1,0 +1,19 @@
+public class MotorControl {
+
+    public synchronized void useMotor(String threadName) {
+
+        long startTime = System.currentTimeMillis();
+
+        System.out.println(startTime + " : " + threadName + " ACQUIRED Motor");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(endTime + " : " + threadName + " RELEASED Motor");
+    }
+}
