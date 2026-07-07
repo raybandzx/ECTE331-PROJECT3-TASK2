@@ -1,0 +1,32 @@
+public class SafetyMonitor extends Thread {
+
+    private MotorControl motor;
+
+    public SafetyMonitor(MotorControl motor) {
+
+        this.motor = motor;
+        setName("Safety Monitor");
+        setPriority(Thread.MAX_PRIORITY);
+
+    }
+
+    @Override
+    public void run() {
+
+        while (true) {
+
+            System.out.println(getName() + " is running.");
+
+            motor.useMotor(getName());
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+}
