@@ -1,0 +1,15 @@
+public class Main {
+
+    public static void main(String[] args) {
+
+        MotorControl motor = new MotorControl();
+
+        LoggerThread logger = new LoggerThread(motor);
+        MotionPlanner planner = new MotionPlanner(motor);
+        SafetyMonitor safety = new SafetyMonitor(motor);
+
+        logger.start();
+        planner.start();
+        safety.start();
+    }
+}
